@@ -1,0 +1,165 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-ink: 18 19 15;
+  --color-paper: 237 235 227;
+  --color-panel: 26 28 22;
+  --color-line: 49 52 42;
+  --color-muted: 166 167 149;
+  --color-dim: 117 118 106;
+  --color-chai: 200 138 61;
+  --color-chai-soft: 58 46 26;
+  --color-signal: 79 166 160;
+  --color-signal-soft: 23 50 48;
+  --color-danger: 252 165 165;
+
+  --color-scrollbar-thumb: 49 52 42;
+  --color-scrollbar-track: 18 19 15;
+}
+
+html.light {
+  --color-ink: 250 249 246;
+  --color-paper: 20 20 15;
+  --color-panel: 255 255 255;
+  --color-line: 228 226 216;
+  --color-muted: 90 91 82;
+  --color-dim: 140 141 130;
+  --color-chai: 180 118 46;
+  --color-chai-soft: 251 238 214;
+  --color-signal: 30 120 115;
+  --color-signal-soft: 214 240 238;
+  --color-danger: 185 28 28;
+
+  --color-scrollbar-thumb: 228 226 216;
+  --color-scrollbar-track: 250 249 246;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+@keyframes persona-fade {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.persona-fade {
+  animation: persona-fade 220ms ease-out;
+}
+
+::selection {
+  background: rgb(var(--color-signal));
+  color: rgb(var(--color-ink));
+}
+
+* {
+  scrollbar-color: rgb(var(--color-scrollbar-thumb)) rgb(var(--color-scrollbar-track));
+  scrollbar-width: thin;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgb(var(--color-scrollbar-thumb));
+  border-radius: 999px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  position: relative;
+  overflow-x: hidden;
+  transition: background-color 400ms ease, color 400ms ease;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at top left, rgb(var(--color-signal) / 0.12) 0%, transparent 28%),
+    radial-gradient(circle at 85% 18%, rgb(var(--color-chai) / 0.16) 0%, transparent 24%);
+  filter: blur(24px);
+  z-index: -1;
+}
+
+.glow-orb {
+  position: relative;
+}
+
+.glow-orb::before {
+  content: "";
+  position: absolute;
+  inset: -60px;
+  z-index: -1;
+  background: radial-gradient(circle, rgb(var(--color-signal) / 0.28) 0%, rgb(var(--color-signal) / 0) 70%);
+  filter: blur(4px);
+  pointer-events: none;
+}
+
+.ambient-wash {
+  background:
+    radial-gradient(60% 40% at 50% 0%, rgb(var(--color-signal) / 0.10) 0%, rgb(var(--color-signal) / 0) 60%),
+    radial-gradient(40% 30% at 85% 15%, rgb(var(--color-chai) / 0.07) 0%, rgb(var(--color-chai) / 0) 60%),
+    rgb(var(--color-ink));
+}
+
+.glass-card {
+  backdrop-filter: blur(14px);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.16);
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-up {
+  animation: fade-up 420ms cubic-bezier(0.19, 1, 0.22, 1) both;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 32s linear infinite;
+}
+
+.marquee-track:hover .animate-marquee {
+  animation-play-state: paused;
+}
+
+.marquee-fade {
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}

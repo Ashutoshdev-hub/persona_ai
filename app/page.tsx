@@ -306,7 +306,7 @@ export default function LandingPage() {
               <span className="text-sm font-medium text-paper">Persona AI</span>
             </div>
             <div className="flex items-center gap-5 font-mono text-xs text-muted">
-              <a href="https://github.com" target="_blank" rel="noreferrer" className="transition-colors hover:text-paper">
+              <a href="https://github.com/Ashutoshdev-hub/persona_ai" target="_blank" rel="noreferrer" className="transition-colors hover:text-paper">
                 GitHub
               </a>
               <a href="https://nextjs.org" target="_blank" rel="noreferrer" className="transition-colors hover:text-paper">
